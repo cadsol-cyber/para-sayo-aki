@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something for Erick Mae 💙</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #06152e, #102f59, #1d4e89);
+    color: #eaf5ff;
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    color: #d9efff;
+    animation: twinkle 3s infinite ease-in-out;
+    opacity: 0.7;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 750px;
+    margin: auto;
+    padding: 65px 20px 50px;
+    text-align: center;
+}
+
+.small-title {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #a9d7ff;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(40px, 10vw, 68px);
+    font-weight: normal;
+    font-style: italic;
+    color: #ffffff;
+    margin: 22px 0 10px;
+    text-shadow: 0 0 25px #5da9ff66;
+}
+
+.subtitle {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #c3e4ff;
+    margin-bottom: 40px;
+}
+
+.heart {
+    color: #9dccff;
+    font-size: 25px;
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #d7ebff;
+    margin: 25px auto;
+    max-width: 500px;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.open-btn {
+    margin-top: 20px;
+    padding: 15px 32px;
+    background: #d9edff;
+    color: #10345c;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    box-shadow: 0 0 25px #72baff30;
+}
+
+.open-btn:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px #8dcaff80;
+}
+
+.music {
+    margin: 30px auto;
+    padding: 17px 20px;
+    max-width: 330px;
+    background: #ffffff0d;
+    border: 1px solid #8bc7ff55;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+}
+
+.music p {
+    margin: 5px 0 12px;
+    color: #b9ddff;
+    font-size: 13px;
+}
+
+.music button {
+    background: transparent;
+    border: 1px solid #8bc7ff80;
+    border-radius: 25px;
+    color: white;
+    padding: 9px 17px;
+    margin: 4px;
+}
+
+.music button:hover {
+    background: #8bc7ff22;
+}
+
+#letterSection {
+    display: none;
+    text-align: left;
+    margin-top: 45px;
+    animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.letter {
+    background: linear-gradient(145deg, #f0f7ff, #dcecff);
+    color: #163b60;
+    padding: clamp(22px, 5vw, 42px);
+    border-radius: 4px;
+    box-shadow: 0 15px 60px #00000050;
+    position: relative;
+    line-height: 1.9;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.letter::before {
+    content: "♡";
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    color: #4c8fc9;
+    margin-bottom: 15px;
+}
+
+.letter h2 {
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 30px;
+    margin: 0 0 25px;
+    color: #164c7c;
+}
+
+#typedText {
+    white-space: pre-wrap;
+    min-height: 100px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 17px;
+    background: #397bb5;
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.signature {
+    margin-top: 25px;
+    text-align: right;
+    font-style: italic;
+    font-size: 18px;
+}
+
+.close-btn {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 25px;
+    border: 1px solid #b8ddff;
+    border-radius: 25px;
+    background: transparent;
+    color: #eaf5ff;
+    letter-spacing: 2px;
+}
+
+.close-btn:hover {
+    background: #ffffff18;
+}
+
+.footer {
+    margin-top: 50px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #a9d7ff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 50px 16px 35px;
+    }
+
+    .letter {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .subtitle {
+        letter-spacing: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+    <div class="small-title">a little something for you</div>
+
+    <h1>Erick Mae</h1>
+
+    <div class="subtitle">
+        A LETTER FROM MY HEART <span class="heart">♡</span>
+    </div>
+
+    <p class="intro" id="intro">
+        Some people come into our lives unexpectedly
+        and somehow make ordinary days feel special.
+        You are one of those people. 💙
+    </p>
+
+    <button class="open-btn" id="openBtn" onclick="openLetter()">
+        ♡ TAP TO OPEN ♡
+    </button>
+
+    <div class="music">
+        <p>♫ A little song dedicated to you</p>
+        <button onclick="toggleSong('song1', this)">▶ Falling for You</button>
+        <button onclick="toggleSong('song2', this)">▶ Paraluman</button>
+
+        <audio id="song1" loop>
+            <source src="fallingforyou.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="song2" loop>
+            <source src="paraluman.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div id="letterSection">
+
+        <div class="letter">
+
+            <h2>Dear Erick Mae,</h2>
+
+            <div id="typedText"></div><span class="cursor" id="cursor"></span>
+
+            <div class="signature hidden" id="signature">
+                Always rooting for you,<br>
+                Your biggest supporter. ♡
+            </div>
+
+        </div>
+
+        <button class="close-btn" onclick="closeLetter()">
+            CLOSE LETTER ✕
+        </button>
+
+    </div>
+
+    <div class="footer">
+        MADE WITH LOVE, JUST FOR YOU ♡
+    </div>
+
+</div>
+
+<script>
+const message = `Thank you for being part of my life. Kasi, I feel special kapag kasama kita. I wasn't like this before. Parang isip-bata lang ako, but when I met you, I started growing as a person and becoming better every day. You became my inspiration in so many things that I do, and I honestly appreciate you more than words can explain.
+
+Thank you for giving me a chance to court you. I really appreciate it, and I hope I never disappoint you. You know, you're so gorgeous in my eyes—not only because of what I see, but because of what my heart feels for you.
+
+Ang bilis ng panahon. Dati, hindi tayo nagpapansinan, pero ngayon, nililigawan na kita. I even get to tell my mother about you. At first, takot ako kasi alam kong strict si Mama and she wants me to focus on my studies. Pero ngayon, nagbago ang ihip ng hangin. Hinahanap ka na niya sa akin. HAHAHA.
+
+Erick Mae, I don't understand why your existence suddenly feels so special to me. Being near you feels like a dream, making even an ordinary day worth remembering.
+
+And always remember, ha? You're worth waiting for. I'm here, willing to wait until you're ready. Sorry sa grammar ko, hihi. Hindi mo kailangang magmadali. I know you still have so many things you want to do, and I want you to enjoy your own journey, too.
+
+Thank you because you're teaching me something important: love isn't only about kilig and happiness. It also takes consistency, patience, and understanding. I don't want you to feel pressured, because your happiness matters to me.
+
+Erick Mae, I dedicate these songs to you: Falling for You and Paraluman. Every time I hear them, ikaw agad ang naaalala ko. Grabe yung impact mo sa buhay ko. I'm trying to improve myself, unlike before, and you motivate me to keep going.
+
+Every time I talk to you, parang nawawala ako sa sarili ko. Parang baliw, AHAHAHA. And when I hugged you for the first time, hindi ko alam kung ano ang nararamdaman ko. Parang mapapasabi na lang ako, panaginip ba 'to?
+
+I wrote this letter for you kasi malapit na ang Pasko. :)) I hope you appreciate it. First time kong gumawa ng ganito, and nagugulat na lang ako na kaya ko palang gawin 'to. HAHAHA.
+
+May mga bagay rin akong gustong ma-achieve, with or without you. Kaya we don't need to rush everything. And sana, huwag kang kainin ng dinosaur kasi ang cute mo. AHAHAHA.
+
+You motivate me to try new things, even basketball, para maging number one supporter mo ako. HAHAHA. But for now, nililigawan pa lang kita, and I really love getting to know you little by little. Para bang natutunaw ako.
+
+Erick Mae, hinding-hindi ako magsasawang intindihin ka, even on days when your mood changes. HAHAHA. And on silent or quiet days, I won't automatically stop caring about you. Alam kong young pa tayo para sa mga ganitong bagay, but don't worry. I want to give you time until your heart is ready to say yes—not because you feel forced, not because you pity me, but because that's genuinely what your heart feels.
+
+Thank you for being one of the best people in my life. Thank you for being a reason why I didn't give up on things I had been meaning to do. Honestly, words aren't enough to describe how much I feel for you.
+
+As of October 22, 7:00 PM, I'm choosing to give you my trust. Hindi ko hihingin agad ang trust mo. Let my actions prove that I'm someone you can trust. If everything feels heavy, I'm here, ready to listen to your rants. You don't have to carry everything alone.
+
+And isa pa, I want to be honest. Sometimes, waiting feels exhausting when silence feels heavier than rejection. Sometimes, I question whether I'm holding on to something uncertain. But whenever I feel like giving up, I remember why I started courting you.
+
+You make my everyday life more meaningful. You taught my heart how to hope. And you remind me that real love doesn't demand; it understands, waits, and endures.
+
+I will always be one of your biggest supporters. I'll be here cheering for you and celebrating even your smallest achievements. The little things you do for me mean more than you probably realize. Thank you talaga.
+
+Whatever you want to achieve in life, I hope you know that someone is rooting for you. I want to see you grow, chase your dreams, and become the person you want to be. I want you to be happy, even when life gets difficult.
+
+I'm not asking you to promise me anything right now. I just want us to take our time, get to know each other, and let things happen naturally. If someday your heart chooses me, I hope it will be because you truly want to.
+
+Until then, I'll keep supporting you, respecting you, and appreciating the person you are.
+
+Thank you for being you, Erick Mae.
+
+You're so special to me, and I'm really grateful that our paths crossed.
+
+Merry Christmas in advance. I hope this little letter makes you smile, even just a little.
+
+Thank you for everything, Erick Mae.
+
+You will always be someone special to me.
+
+With all my sincerity,
+Your biggest supporter. ♡`;
+
+let typing = false;
+let typingInterval;
+let position = 0;
+let opened = false;
+
+function openLetter() {
+    if (opened) return;
+    opened = true;
+
+    document.getElementById("letterSection").style.display = "block";
+    document.getElementById("openBtn").classList.add("hidden");
+    document.getElementById("intro").classList.add("hidden");
+
+    document.getElementById("letterSection").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    // Start music after the user's tap.
+    const song = document.getElementById("song1");
+    song.play().catch(() => {});
+
+    startTyping();
+}
+
+function startTyping() {
+    if (typing) return;
+    typing = true;
+
+    const output = document.getElementById("typedText");
+    const cursor = document.getElementById("cursor");
+    const signature = document.getElementById("signature");
+
+    typingInterval = setInterval(() => {
+        if (position < message.length) {
+            output.textContent += message.charAt(position);
+            position++;
+
+            // Keep the currently typed words visible.
+            if (position % 8 === 0) {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
+            }
+        } else {
+            clearInterval(typingInterval);
+            typing = false;
+            cursor.classList.add("hidden");
+            signature.classList.remove("hidden");
+        }
+    }, 28);
+}
+
+function closeLetter() {
+    clearInterval(typingInterval);
+    typing = false;
+    opened = false;
+    position = 0;
+
+    document.getElementById("typedText").textContent = "";
+    document.getElementById("cursor").classList.remove("hidden");
+    document.getElementById("signature").classList.add("hidden");
+    document.getElementById("letterSection").style.display = "none";
+    document.getElementById("openBtn").classList.remove("hidden");
+    document.getElementById("intro").classList.remove("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function toggleSong(id, button) {
+    const songs = [
+        document.getElementById("song1"),
+        document.getElementById("song2")
+    ];
+
+    const selected = document.getElementById(id);
+
+    songs.forEach(song => {
+        if (song !== selected) {
+            song.pause();
+            song.currentTime = 0;
+        }
+    });
+
+    if (selected.paused) {
+        selected.play().then(() => {
+            document.querySelectorAll(".music button").forEach(btn => {
+                btn.textContent = btn.textContent.replace("❚❚", "▶");
+            });
+            button.textContent = "❚❚ " +
+                (id === "song1" ? "Falling for You" : "Paraluman");
+        }).catch(() => {
+            alert("Please make sure the MP3 file is in the same folder as this HTML file.");
+        });
+    } else {
+        selected.pause();
+        button.textContent = "▶ " +
+            (id === "song1" ? "Falling for You" : "Paraluman");
+    }
+}
+
+// Create random decorative stars.
+const starContainer = document.getElementById("stars");
+
+for (let i = 0; i < 65; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.textContent = Math.random() > 0.5 ? "✦" : "·";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (Math.random() * 15 + 5) + "px";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    starContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
