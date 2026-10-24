@@ -1,1 +1,462 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Erick Mae </title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #eaf5ff;
+    background:
+      radial-gradient(ellipse at 50% 0%, #234f83, transparent 55%),
+      linear-gradient(145deg, #06152c, #0c2548 55%, #07162c);
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .55;
+    background-image:
+      radial-gradient(2px 2px at 15% 20%, white 98%, transparent),
+      radial-gradient(2px 2px at 75% 35%, white 98%, transparent),
+      radial-gradient(1px 1px at 45% 65%, white 98%, transparent),
+      radial-gradient(2px 2px at 85% 80%, white 98%, transparent),
+      radial-gradient(1px 1px at 25% 90%, white 98%, transparent);
+    background-size: 180px 180px;
+    animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+    to { background-position: 180px 180px; }
+}
+
+.screen {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 16px;
+}
+
+#home {
+    flex-direction: column;
+    text-align: center;
+}
+
+.moon {
+    font-size: 35px;
+    color: #b9e0ff;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    50% { text-shadow: 0 0 25px #a5d5ff; }
+}
+
+.small-title {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #a9d3fa;
+    margin: 17px 0;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 8vw, 53px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+}
+
+h1 em {
+    color: #a9d8ff;
+}
+
+.subtitle {
+    font-size: 12px;
+    line-height: 2;
+    color: #bdcee4;
+    max-width: 310px;
+    margin: 22px auto;
+}
+
+.envelope {
+    position: relative;
+    width: 230px;
+    height: 150px;
+    margin: 25px auto 30px;
+    background: #8cb9e8;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 15px 40px #0005;
+    transition: transform .3s;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    background: #b5d9fb;
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    transform-origin: top;
+    transition: transform .7s ease;
+}
+
+.envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 53px;
+    left: calc(50% - 20px);
+    font-size: 34px;
+    color: #143c67;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.envelope-note {
+    position: absolute;
+    z-index: 1;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 21px;
+    color: #183b60;
+}
+
+.button {
+    padding: 12px 23px;
+    border: 1px solid #a6d5ff;
+    border-radius: 30px;
+    background: #b5dcff;
+    color: #102b4c;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.hint {
+    font-size: 10px;
+    color: #8faac9;
+    margin-top: 14px;
+}
+
+#letterScreen {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 30px;
+    padding-bottom: 45px;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    max-width: 680px;
+    margin-bottom: 18px;
+}
+
+.toolbar span {
+    color: #b6dfff;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.music {
+    border: 1px solid #608bb8;
+    color: #e5f3ff;
+    background: #153458;
+    border-radius: 25px;
+    padding: 10px 13px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.paper {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(24px, 6vw, 52px);
+    color: #263d57;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        #f6f3eb 0px,
+        #f6f3eb 31px,
+        #c6d7e4 32px,
+        #f6f3eb 33px
+      );
+    border-radius: 3px 3px 12px 3px;
+    box-shadow: 0 20px 60px #0005;
+    position: relative;
+}
+
+.paper::before {
+    content: "";
+    position: absolute;
+    right: 22px;
+    top: 15px;
+    color: #739dc5;
+    font-size: 18px;
+}
+
+.paper-date {
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+    color: #6483a4;
+    margin-bottom: 22px;
+}
+
+.paper h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(27px, 6vw, 37px);
+    font-weight: 500;
+    margin: 0 0 20px;
+    line-height: 1.3;
+}
+
+.paper h2 em {
+    color: #437eb4;
+}
+
+#letterText {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(19px, 4.7vw, 23px);
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.signature {
+    margin-top: 30px;
+    font-family: 'Caveat', cursive;
+    font-size: 27px;
+    color: #346b9f;
+}
+
+.bottom-note {
+    max-width: 350px;
+    text-align: center;
+    margin: 27px auto 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.8;
+    font-size: 15px;
+    color: #bdd8f5;
+}
+
+.end-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.secondary {
+    background: transparent;
+    color: #d7eaff;
+}
+
+footer {
+    color: #7898bb;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 35px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<audio id="song" loop preload="auto">
+    <source src="fallingforyou.mp3" type="audio/mpeg">
+</audio>
+
+<!-- OPENING -->
+<section class="screen" id="home">
+
+    <div class="moon"></div>
+    <div class="small-title">For my favorite person</div>
+
+    <h1>Erick Mae</h1>
+
+  
+    <div class="envelope" id="envelope" aria-label="Open the letter">
+        <div class="envelope-note">For Erick Mae </div>
+    </div>
+
+    <button class="button" id="openLetter">Open your letter </button>
+    <div class="hint">take your time reading this</div>
+
+</section>
+
+<!-- LETTER -->
+<section class="screen" id="letterScreen">
+
+    <div class="toolbar">
+        <span> A LETTER FROM THE HEART</span>
+        <button class="music" id="musicButton"> Play our song</button>
+    </div>
+
+    <article class="paper">
+        <div class="paper-date">Written with love, before Christmas...</div>
+
+        <h2>Dear <em>Erick Mae,</em></h2>
+
+        <div id="letterText"></div>
+
+        <div class="signature">
+            always cheering for you,<br>
+            your biggest supporter 
+        </div>
+    </article>
+
+    <div class="end-buttons">
+        <button class="button" id="showAll">Read the whole letter</button>
+        <button class="button secondary" id="backHome">Back to the beginning</button>
+    </div>
+
+    <footer>MADE WITH LOVE, FOR YOU MAE</footer>
+</section>
+
+<script>
+const home = document.getElementById('home');
+const letterScreen = document.getElementById('letterScreen');
+const envelope = document.getElementById('envelope');
+const letterText = document.getElementById('letterText');
+const song = document.getElementById('song');
+const musicButton = document.getElementById('musicButton');
+
+const originalLetter = `ERICK  MAE THANK YOU FOR BEING PART OF MY LIFE KASI I FEEL SPECIAL KAPAG KASAMA KITA I'M NOT LIKE THIS BEFORE KASI PARANG ISIP BATA LANG AKO PERO NUNG NAKILALA KITA MAS NAG GROW AKO AS A PERSON AND GETTING BETTER AND BETTER EVERYDAY KASI NAGING INSPIRATION KITA SA LAHAT NG MGA BAGAY NA GINAGAWA KO THANK YOU FOR GIVING ME A CHANGE TO COURT YOU I REALLY APPRECIATE IT KASI DIMOKO BINIGO YOU KNOW YOU'RE SO GORGEOUS IN MY EYES NOT BECAUSE WHAT I SEE BUT BECAUSE WHAT MY HEART FEEL FOR YOU ANG BILIS NG PANAHON DATI DI TAYU NAGPAPANSINAN PERO NOW NILILIGAWAN NA KITA AT THE SAME TIME NAKWKWENTO KITA SA MOTHER AT FIRST TAKOT AKO KASI ALAM KUNG STRICT SI MAMA KASI NEED KO MAG FOCUS SA PAG AARAL PERO NOW NAGBAGO IHIP NG HANGIN HINAHANAP KA NA NYA SAKIN. ERICK MAE I DON'T UNDERSTAND WHY YOUR EXISTANCE SUDDENLY FELT SO SPECIAL AND MY HEART BEING NEAR YOU IS LIKE A DREAM MAKING EVEN AR ORDINARY DAY FEEL WORTH REMEMBERING AND ALWAYS REMEMBER ERICK MAE HAA THAT YOU'RE WORTH TO WAIT I'M JUST HERE WAITING FOR YOU UNTIL YOUR READY NA SORRY SA GRAMMAR KO HIHI HINDI MO KAILANGAN MAG MADALI HA BECAUSE I KNOW NA MADAMI KAPANG BAGAY NA GUSTO MONG GAWIN AND THANK YOU RIN KASI NAGIGING LESSON LEARNED SYA SAKIN NA LOVE IS NOT ABOUT KILIG HAPPINESS BUT IT CAN ALSO CONSISTENCY AND PATIENT I DON'T WANT YOU TO FEEL PRESSURE BECAUSE YOUR HAPPINESS MATTER FOR ME  AT ERICK MAE I DIDICATE THIS SONG FOR YOU (FALLINGFORYOU) (PARALUMAN) YOU'RE SO SPECIAL FOR ME KASI EVERYTIME NA NARIRINIG KO ANG KANTANG TO IKAW NAAALALA KO GRABE YUNG IMPACT MO SA BUHAY KO KASI NAG AAYUS NAKO UNLIKE BEFORE AND WHATEVER YOU WANT TO ATCHIEVE IM HERE SUPPORTING YOU EVERYTIME NA NAKAKAUSAP KITA PARANG NAWAWALA AKO SA SARILI KO PARANG BALIW AHAHHAHA THEN NUNG FIRST TIME NA NIYAKAP KITA DIKO ALAM NARARAMDAMN KO LIKE PARANG MAPAPASABI NALANG AKO NA PANAGINIP BATO I WROTE THIS LETTER FOR YOU KASI MALAPIT NA YUNG PASKO:)) I HOPE YOU APPRECIATE THIS LETTER FIRST TIME KO GUMAWA NETO AND NAGUGULAT NALANG AKO NA KAYA KO PALANG GAWIN TO HAHAHA MAY MGA BAGAY RIN AKONG GUSTO MO ATCHIEVE WITH YOU OR WITHOUT YOU KAYA WE DON'T NEED TO RUSH EVERYTHING AND SANA WAG KA KAININ NG DINASOUR KASI ANG CUTE MO NAMOMOTIVATE AKONG GUMAWA NG MGA BAGAY BAGAY KAGAYA NG PAG BASSKETBALL PARA MAGING NUMBER 1 SUPPORTER KITA HAHA BUT NOW NILILIGAWAN PA KITA AND I REALLY LOVE IT KASI PAUNTI UNTI NAKIKILALA KITA NA PARA BANG NATUTUNAW AKO ERICK MAE HINDING HINDI AKO MAGSASAWANG INTINDIHIN MOOD SWINGS MO HAHAHA AND ERICK MAE ON SILENT OR QUIET DAYS HINDING HINDI AKO TITIGIL SA PANLILIGAW SAYU ALAM KUNG YOUNG PA TAYU PARA SA MGA GANITONG BAGAY PERO DON'T WORRY MAG WAWAIT TALAGA AKO UNTIL YOUR HEART READY TO SAY YES HINDI YUNG NAPILITAN LANG HINDI RIN DAHIL NAAWA LANG BUT BECAUSE WHAT YOUR HEART FELT THANK YOU:) YOUR THE BEST PERSON THAT I HAVE IN MY LIFE THANK YOU FOR BEING A REASON WHY I DIDN'T GIVE UP ON THINGS THAT THAT I'VE BEEN MEANING TO DO HONESTLY WORD AREN'T ENOUGH TO DESCRIBE HOW MUCH I REALLY FEEL FOR YOU,  HINDI KO HIHINGIIN YUNG TRUST MO LET MY ACTION PROVE NA MAPAGKATIWALAAN MO IF EVERYTHING FEELS HEAVY IM HERE READY TO LISTEN SA MGA RANTS MO HA AND ISA PA KAHIT MINSAN MAY NARARAMDAMN AKONG LIKE WAITING FEELS EXHAUSTING WHEN SILENT FELT HEAVIER THAN REJECTION, AT KAILAN I QUESTION IF I'M HOLDING ON TO SOMETHING UNCERTAIN BUT BAWAT PAGKAKATAONG GUSTO KO MAG GIVE UP BUMABALIK ANG DAHILAN KUNG BAKIT KITA NILILIGAWAN YOU GIVE MY EVEYDAY LIFE MEANINGFUL YOU TAUGHT MY HEART HOW TO HOPE AND YOU REMIND ME THAT REAL LOGE DOESN'T DEMAND, IT UNDERSTAND PALA AND INDURES. I ALWAYS BE YOUR BIGGEST SUPPORTER HA!! AND THERE FOR YOU ANYTIME MGA SMALLEST THINK NA GINAGAWA MO PARA SAKIN MALAKI NA THANK YOU TALAGA I WROTE THIS FOR YOU AND WHAT MY HEART FELT THANK YOU ERICK MAE LOML:)AT DUN SA OVERLOOKING IM SO VERY VERY HAPPY KASI FIRST TIME KO DI MAKAFEEL NG AWKWARDNESS AND SPECIALLY YUNG NAG HOLDING HANDS TAYU I STILL CAN'T BELIEVE NA NANGYARI YUN KASI SA IMAGINATION KU LANG NANGYARI YUN BUT NOWADAYS NA EXPERIENCE KO NA YUNG MGA GANUN BIGGEST ACHIEVEMENT KO YUN SA BUHAY KO AND YUNG INAKBAYAN KITA YUN NAISIP KO PANAGINIP BATO GRABE TALAGA UN THANK YOU ERICK MAEE SANA MANGYARI ULIT YUN SA SUNOD AND GRABI TALAGA FIRST TIME SAKIN UN:)`;
+
+let typingTimer = null;
+let isTyping = false;
+let typedCount = 0;
+
+function stopTyping() {
+    if (typingTimer !== null) {
+        clearTimeout(typingTimer);
+        typingTimer = null;
+    }
+    isTyping = false;
+}
+
+function typeLetter() {
+    stopTyping();
+    letterText.textContent = '';
+    typedCount = 0;
+    isTyping = true;
+
+    function typeNext() {
+        if (!isTyping) return;
+
+        // Type in short batches so the long letter stays responsive.
+        const batchSize = 1;
+        typedCount = Math.min(typedCount + batchSize, originalLetter.length);
+        letterText.textContent = originalLetter.slice(0, typedCount);
+
+        if (typedCount < originalLetter.length) {
+            typingTimer = setTimeout(typeNext, 100);
+        } else {
+            isTyping = false;
+            typingTimer = null;
+        }
+    }
+
+    typeNext();
+}
+
+function showFullLetter() {
+    stopTyping();
+    letterText.textContent = originalLetter;
+}
+
+document.getElementById('openLetter').addEventListener('click', () => {
+    envelope.classList.add('open');
+
+    // Music starts following the user's click.
+    song.play().then(() => {
+        musicButton.textContent = ' Pause our song';
+    }).catch(() => {
+        musicButton.textContent = ' Play our song';
+    });
+
+    setTimeout(() => {
+        home.style.display = 'none';
+        letterScreen.style.display = 'flex';
+        window.scrollTo(0, 0);
+        typeLetter();
+    }, 550);
+});
+
+envelope.addEventListener('click', () => {
+    envelope.classList.add('open');
+});
+
+musicButton.addEventListener('click', async () => {
+    if (song.paused) {
+        try {
+            await song.play();
+            musicButton.textContent = ' Pause our song';
+        } catch (error) {
+            musicButton.textContent = ' Music unavailable';
+        }
+    } else {
+        song.pause();
+        musicButton.textContent = ' Play our song';
+    }
+});
+
+document.getElementById('showAll').addEventListener('click', showFullLetter);
+
+document.getElementById('backHome').addEventListener('click', () => {
+    stopTyping();
+    letterScreen.style.display = 'none';
+    home.style.display = 'flex';
+    window.scrollTo(0, 0);
+});
+</script>
+
+</body>
+</html>
